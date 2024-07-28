@@ -1,0 +1,26 @@
+@import "../../styles/vars.scss";
+
+.search {
+  position: relative;
+  &__input {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    color: $text-color;
+    border: 1px solid #efefef;
+    box-shadow: 15px 20px 45px 0px rgba(233, 233, 233, 0.25);
+    border-radius: 10px;
+    padding: 16px 30px 16px 44px;
+    min-width: 200px;
+
+    &_invalid {
+      border-color: red;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: 17px;
+    top: 17px;
+  }
+}

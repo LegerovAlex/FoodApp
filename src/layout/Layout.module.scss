@@ -1,0 +1,26 @@
+@import "../styles/vars.scss";
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-right: 1px solid $separator-color;
+}
+
+.button__exit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.content {
+  padding: 40px 60px;
+  width: 100%;
+}

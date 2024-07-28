@@ -1,0 +1,25 @@
+@import "../../styles/vars.scss";
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__link {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    text-decoration: none;
+    color: $text-color;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+
+    &_active {
+      color: $primary-color;
+    }
+  }
+
+  &__link:hover {
+    color: $primary-color;
+  }
+}

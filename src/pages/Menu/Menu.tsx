@@ -1,31 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Headling } from "../../components/Headling/Headling";
-import { ProductCard } from "../../components/ProductCard/ProductCard";
 import { Search } from "../../components/Search/Search";
 import styles from "./Menu.module.scss";
-import { PREFIX } from "../../variables/api";
-import { Product } from "../../interface/product.interface";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../store/store";
+import { fetchCards } from "../../store/cards.slice";
+import { MenuList } from "./MenuLIst/MenuLIst";
 
-export function Menu() {
-  const [product, setProducts] = useState<Product[]>([]);
-
-  async function getMenu() {
-    try {
-      const res = await fetch(`${PREFIX}/products`);
-      if (!res.ok) {
-        return;
-      }
-      const data = (await res.json()) as Product[];
-      setProducts(data);
-    } catch (e) {
-      console.error(e);
-      return;
-    }
-  }
-
-  useEffect(() => {
-    getMenu();
-  }, []);
+ function Menu() {
+  
+  const dispatch = useDispatch<AppDispatch>()
+  const {loading, cards, error} = useSelector((state:RootState)=> state.cards)
+  useEffect(()=>{
+    dispatch(fetchCards())
+  },[dispatch])
 
   return (
     <>
@@ -34,18 +22,16 @@ export function Menu() {
         <Search placeholder="Search..." />
       </div>
       <div>
-        {product.map((item) => (
-          <ProductCard
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            description={item.ingredients.join(", ")}
-            rating={item.rating}
-            price={item.price}
-            image={item.image}
-          />
-        ))}
+        {error && <p>Sorry: {error}</p>}
+        {!loading ? (
+         <MenuList cards={cards} />
+        )
+        : (<p>Loading....</p>)               
+        }
+                
       </div>
     </>
   );
 }
+
+export default Menu

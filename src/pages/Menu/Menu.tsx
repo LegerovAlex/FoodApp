@@ -10,10 +10,15 @@ import { MenuList } from "./MenuLIst/MenuLIst";
  function Menu() {
   
   const dispatch = useDispatch<AppDispatch>()
-  const {loading, cards, error} = useSelector((state:RootState)=> state.cards)
+  const {loading, cards, error,} = useSelector((state:RootState)=> state.cards)
+  
+  
   useEffect(()=>{
     dispatch(fetchCards())
   },[dispatch])
+
+
+
 
   return (
     <>
@@ -23,12 +28,13 @@ import { MenuList } from "./MenuLIst/MenuLIst";
       </div>
       <div>
         {error && <p>Sorry: {error}</p>}
-        {!loading ? (
-         <MenuList cards={cards} />
-        )
-        : (<p>Loading....</p>)               
-        }
-                
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            {cards.length !== 0 ? <MenuList cards={cards} /> : <p>Card not found...</p>}
+          </>
+        )}
       </div>
     </>
   );

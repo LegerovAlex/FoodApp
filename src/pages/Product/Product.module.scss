@@ -1,0 +1,37 @@
+
+.product {
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-bottom: 100px;
+    }
+   
+    &__btn {
+        display: flex;
+        align-items: center;
+        gap:15px
+    }
+ 
+   &__main {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+   }
+    &__desc {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+   
+   &__img {
+    border-radius: 10px;
+   }
+   
+   &__price, &__rating, &__ingredient{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 22px;
+   }
+}

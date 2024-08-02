@@ -1,0 +1,52 @@
+@import "../../styles/vars.scss";
+
+.login {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+
+     
+   &__error {
+      background: #FFC529;
+      color: $white-color;
+      padding: 20px;
+    
+   }
+
+    &__field {
+        width: 50vh;
+        display: flex;
+	    flex-direction: column;
+	    gap: 5px;
+        
+    } 
+   
+   &__label {
+    color: #C4C4C4;
+	font-size: 17px;
+	font-weight: 400;
+   }
+
+
+  &__register {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+	align-items: center;
+	color: $text-secondary-color;
+	font-size: 14px;
+  }
+
+  &__links  {
+    text-decoration: none;
+    color: $primary-color;
+  }
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}

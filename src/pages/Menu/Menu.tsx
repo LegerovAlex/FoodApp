@@ -7,18 +7,17 @@ import { AppDispatch, RootState } from "../../store/store";
 import { fetchCards } from "../../store/cards.slice";
 import { MenuList } from "./MenuLIst/MenuLIst";
 
- function Menu() {
-  
-  const dispatch = useDispatch<AppDispatch>()
-  const {loading, cards, error,} = useSelector((state:RootState)=> state.cards)
-  
-  
-  useEffect(()=>{
-    dispatch(fetchCards())
-  },[dispatch])
+function Menu() {
+  const dispatch = useDispatch<AppDispatch>();
+  const { loading, cards, error, searchCards, searchError } = useSelector(
+    (state: RootState) => state.cards
+  );
 
+  useEffect(() => {
+    dispatch(fetchCards());
+  }, [dispatch]);
 
-
+  const displayCards = searchCards.length > 0 ? searchCards : cards;
 
   return (
     <>
@@ -27,17 +26,12 @@ import { MenuList } from "./MenuLIst/MenuLIst";
         <Search placeholder="Search..." />
       </div>
       <div>
-        {error && <p>Sorry: {error}</p>}
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            {cards.length !== 0 ? <MenuList cards={cards} /> : <p>Card not found...</p>}
-          </>
-        )}
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+        {searchError ? <p>{searchError}</p> : <MenuList cards={displayCards} />}
       </div>
     </>
   );
 }
 
-export default Menu
+export default Menu;

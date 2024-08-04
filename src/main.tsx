@@ -13,20 +13,24 @@ import { Login } from "./pages/Login/Login";
 import { Register } from "./pages/Register/Register";
 import { RequireAuth } from "./helpers/RequireAuth";
 
-const Menu = lazy(()=> import("./pages/Menu/Menu"))
+export const Menu = lazy(() => import("./pages/Menu/Menu"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RequireAuth><Layout /></RequireAuth> ,
+    element: (
+      <RequireAuth>
+        <Layout />
+      </RequireAuth>
+    ),
     children: [
       {
         path: "/",
         element: (
           <Suspense fallback={<>Loading......</>}>
-            <Menu/>
+            <Menu />
           </Suspense>
-        )
+        ),
       },
       {
         path: "/cart",
@@ -40,17 +44,17 @@ const router = createBrowserRouter([
   },
   {
     path: "/auth",
-    element: <AuthLayout/>,
-    children:[
+    element: <AuthLayout />,
+    children: [
       {
-        path:"login",
-        element:<Login/>
+        path: "login",
+        element: <Login />,
       },
       {
-        path:"register",
-        element:<Register/>
+        path: "register",
+        element: <Register />,
       },
-    ]
+    ],
   },
   {
     path: "*",
@@ -61,7 +65,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

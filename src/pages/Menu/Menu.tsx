@@ -26,9 +26,15 @@ function Menu() {
         <Search placeholder="Search..." />
       </div>
       <div>
-        {loading && <p>Loading...</p>}
+       {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        {searchError ? <p>{searchError}</p> : <MenuList cards={displayCards} />}
+        {!loading && !error && (
+          searchError ? (
+            <p>{searchError}</p>
+          ) : (
+            <MenuList cards={displayCards} />
+          )
+        )}
       </div>
     </>
   );

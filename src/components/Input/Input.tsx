@@ -3,10 +3,11 @@ import styles from "./Input.module.scss";
 import { InputProps } from "./Input.props";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { isValid = true, className = "", ...props },
+  { isValid = true,  error,  className = "",  ...props },
   ref
 ) {
   return (
+    <>
     <input
       ref={ref}
       className={`${styles.input} ${
@@ -14,6 +15,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       } ${className}`}
       {...props}
     />
+    {error && <div className={styles.error}>{error}</div>}
+    </>
   );
 });
 

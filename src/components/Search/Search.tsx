@@ -8,6 +8,7 @@ import {
   fetchCards,
   fetchSearchCards,
 } from "../../store/cards.slice";
+import { useDebounce } from "../../helpers/debounce";
 
 export function Search({
   isValid = true,
@@ -17,17 +18,22 @@ export function Search({
   const [value, setValue] = useState("");
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const newValue = e.target.value;
-    setValue(newValue);
-
+  const debouncedSearch = useDebounce((newValue: string) => {
     if (newValue.trim() === "") {
       dispatch(cardsAction.clearSearchCards());
       dispatch(fetchCards());
     } else {
       dispatch(fetchSearchCards(newValue));
     }
+  }, 1000);
+
+
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const newValue = e.target.value;
+    setValue(newValue);
+    debouncedSearch(newValue)
   };
 
   return (

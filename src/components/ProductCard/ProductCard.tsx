@@ -7,15 +7,12 @@ import { cartAction } from "../../store/cart.slice";
 import { MouseEvent } from "react";
 
 export function ProductCard(props: ProductCardProps) {
+  const dispatch = useDispatch<AppDispatch>();
 
-
-  const dispatch = useDispatch<AppDispatch>()
-
-  const add = (event:MouseEvent)=> {
-    event.preventDefault()
-    dispatch(cartAction.add(props.id))
-  }
-
+  const add = (event: MouseEvent) => {
+    event.preventDefault();
+    dispatch(cartAction.add(props.id));
+  };
 
   return (
     <Link to={`/product/${props.id}`} className={styles.link}>
@@ -28,7 +25,7 @@ export function ProductCard(props: ProductCardProps) {
             {props.price}&nbsp;
             <span className={styles.card__currency}>₽</span>
           </div>
-          <button className={styles.card__cartIcon} onClick={add}  >
+          <button className={styles.card__cartIcon} onClick={add}>
             <img src="/cart-button-icon.svg" alt="add to cartd" />
           </button>
           <div className={styles.card__rating}>

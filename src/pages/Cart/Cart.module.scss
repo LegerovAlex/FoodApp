@@ -1,0 +1,45 @@
+@import "../../styles/vars.scss";
+.headling {
+  margin-bottom: 40px;
+}
+
+.line {
+  max-width: 512px;
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+}
+
+.hr {
+  max-width: 512px;
+  margin: 0;
+  border: 1px solid #f1f2f3;
+}
+
+.line span {
+  color: $text-color;
+}
+
+.text {
+  color: $text-color;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.price {
+  color: $text-color;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.checkout {
+  max-width: 512px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+}

@@ -6,6 +6,7 @@ import { cardsAction, fetchCard } from "../../store/cards.slice";
 import { Headling } from "../../components/Headling/Headling";
 import { Button } from "../../components/Button/Button";
 import styles from "./Product.module.scss";
+import { cartAction } from "../../store/cart.slice";
 
 export function Product() {
   const { id } = useParams<{ id: string }>();
@@ -22,6 +23,10 @@ export function Product() {
     }
   }, [dispatch, id]);
 
+  const add = () => {
+    dispatch(cartAction.add(Number(card.id)));
+  };
+
   return (
     <>
       <Link to={"/"}>
@@ -31,7 +36,7 @@ export function Product() {
         <div className={styles.product}>
           <div className={styles.product__header}>
             <Headling>{card.name}</Headling>
-            <Button className={styles.product__btn} size="small">
+            <Button onClick={add} className={styles.product__btn} size="small">
               <img src="/cart-button-icon.svg" alt="Cart Icon" />
               In Cart
             </Button>

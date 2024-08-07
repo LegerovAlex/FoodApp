@@ -3,14 +3,16 @@ import { Button } from "../components/Button/Button";
 import { Navigation } from "../components/Navigation/Navigation";
 import { Profile } from "../components/Profile/Profile";
 import styles from "./Layout.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch,  } from "react-redux";
 import { userAction } from "../store/user.slice";
-import { AppDispatch } from "../store/store";
+import { AppDispatch  } from "../store/store";
 import {} from "react";
 
 export function Layout() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+
+
 
   const logout = () => {
     dispatch(userAction.logout());

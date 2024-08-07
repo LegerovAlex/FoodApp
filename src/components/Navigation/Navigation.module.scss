@@ -22,4 +22,14 @@
   &__link:hover {
     color: $primary-color;
   }
+
+  &__cart {
+      background-color: $primary-color;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      color: $white-color;
+      font-size: 12px;
+  }
 }

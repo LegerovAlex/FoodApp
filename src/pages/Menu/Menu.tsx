@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { fetchCards } from "../../store/cards.slice";
 import { MenuList } from "./MenuLIst/MenuLIst";
+import { Lox } from "../../components/Lox/Lox";
 
 function Menu() {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,6 +24,7 @@ function Menu() {
     <>
       <div className={styles.head}>
         <Headling>Menu</Headling>
+        <Lox></Lox>
         <Search placeholder="Search..." />
       </div>
       <div>
